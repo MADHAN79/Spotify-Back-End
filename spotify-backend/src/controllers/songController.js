@@ -47,7 +47,27 @@ const addSong = async (req,res) => {
 }
 
 const listSong = async (req,res) => {
-
+    try {
+        
+        const allSongs = await songModel.find({}); //we are leaving the filter object empty so that we can get all the data from songModel
+        res.json({success:true, songs:allSongs});
+        
+    } catch (error) {
+        res.json({ success:false });   
+    }
 }
 
-export { addSong, listSong }
+const removeSong = async (req,res) => {
+    try {
+
+        //only if you know all these types of methods like .find, .findByIdAndDelete you can work on backend.
+        await songModel.findByIdAndDelete(req.body.id); //delete the song based on id
+        res.json({success:true, message:"Song removed"});
+        
+    } catch (error) {
+        res.json({ success:false });   
+    }
+}
+
+//Exporting all these func. to songRoute.js
+export { addSong, listSong, removeSong }

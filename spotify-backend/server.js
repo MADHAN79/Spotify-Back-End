@@ -6,6 +6,7 @@ import 'dotenv/config'
 import songRouter from './src/routes/songRoute.js';
 import connectDB from './src/config/mongodb.js';
 import connectCloudinary from './src/config/cloudinary.js';
+import albumRouter from './src/routes/albumRoute.js';
 
 // <------------------------
     //app config
@@ -31,9 +32,11 @@ import connectCloudinary from './src/config/cloudinary.js';
 
 // ------------------------>
 
-    //initializing routes
+    //initializing routes for songRoute.js
     app.use("/api/song", songRouter)
 
+    //initializing routes for albumRoute.js
+    app.use("/api/album", albumRouter)
 
         //using app.get method we have created the api and running in localhost('/')
         app.get('/', ( req,res ) => res.send('API Working'))

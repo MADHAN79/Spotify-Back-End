@@ -64,7 +64,8 @@ const AddSong = () => {
 //we can use if loading is true then display loading animation div or else display the form.
   return loading ?  (
         <div className='grid place-items-center min-h-[80vh]'>
-            <div className='w-16 h-16 place-self-center border-4 border-gray-400 border-t-green-800 rounded-full animate-spin'></div>
+            {/* border-4 border-gray-400 border-t-green-800 for complete regular circle loading animation*/}
+            <div className='w-16 h-16 place-self-center border-x-4 border-green-600 rounded-full animate-spin'></div>
         </div>
   ) : (
     <form onSubmit={onSubmitHandler} className='flex flex-col items-start gap-8 text-gray-600'>

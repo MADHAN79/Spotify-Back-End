@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { url } from '../App';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -45,6 +45,7 @@ const ListSong = () => {
     }
 
     //its an on-mount useEffect, since dependency array is empty.
+    //fetching songs and storing in the [data] state.
     useEffect(()=>{
         fetchSongs();
     },[]);

@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { assets } from '../assets/assets'
 
 //to call the API we use axios package
@@ -61,6 +61,29 @@ const AddSong = () => {
         setLoading(false);
     }
 
+    //fetching album data to display in drop-down menu:
+    const loadAlbumData = async () => {
+        try {
+            
+            //getting list of album data as response and storing it in [albumData] state.
+            const response = await axios.get(`${url}/api/album/list`);
+
+            if(response.data.success){
+                setAlbumData(response.data.albums)
+            }else {
+                toast.error("Unable to load albums data")
+            }
+
+        } catch (error) {
+            toast.error("Error occured")
+        }
+    }
+
+    useEffect(()=>{
+        loadAlbumData();
+    },[]);
+
+
 //we can use if loading is true then display loading animation div or else display the form.
   return loading ?  (
         <div className='grid place-items-center min-h-[80vh]'>
@@ -113,6 +136,9 @@ const AddSong = () => {
             <p>Album</p>
             <select onChange={(e)=>setAlbum(e.target.value)} defaultValue={album} className='bg-transparent outline-green-600 border-2 border-gray-400 p-2.5 w-[150px] rounded-xl'>
                 <option value="none">None</option>
+                {albumData.map((item, index) =>(
+                    <option key={index} value={item.name}>{item.name}</option>
+                ))}
             </select>
         </div>
 

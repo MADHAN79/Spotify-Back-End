@@ -46,11 +46,11 @@ const AddSong = () => {
             if(response.data.success) {
                 toast.success("Song added");
                 //resetting the input fields:
+                setSong(false);
+                setImage(false);
                 setName("");
                 setDesc("");
                 setAlbum("none");
-                setImage(false);
-                setSong(false);
             }else {
                 toast.error("Upload song not successful")
             }
@@ -79,7 +79,7 @@ const AddSong = () => {
                 <input onChange={(e)=>setSong(e.target.files[0])} type="file" id='song' accept='audio/*' hidden />
                 <label htmlFor="song">
                     {/* if the song is added the upload_added tick image is displayed or default upload_song image is displayed */}
-                    <img src={song ? assets.upload_added : assets.upload_song} className='w-24 cursor-pointer rounded-[50%] border-x-4 border-green-600' alt="" />
+                    <img src={song ? assets.upload_added : assets.upload_song} className='w-36 cursor-pointer rounded-[50%] border-x-4 border-green-600' alt="" />
                 </label>
 
             </div>
@@ -91,7 +91,7 @@ const AddSong = () => {
                 <input onChange={(e)=>setImage(e.target.files[0])} type="file" id='image' accept='image/*' hidden />
                 <label htmlFor="image">
                     {/* if the image is added the uploaded image itself is displayed or default upload_area image is displayed */}
-                    <img src={image ? URL.createObjectURL(image) : assets.upload_area} className='w-24 cursor-pointer rounded-[50%] border-x-4 border-green-600' alt="" />
+                    <img src={image ? URL.createObjectURL(image) : assets.upload_area} className='w-32 cursor-pointer border-2 border-green-600' alt="" />
                 </label>
 
             </div>

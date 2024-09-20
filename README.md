@@ -11,3 +11,5 @@ MADE IN PURE LOGIC LAND :)
 
 This project uses all the fundamental concepts of
 React like Components, State, useRef, useEffect, useContext and eventHandler and much more...
+
+Project hosted link : https://madhan-spotify.netlify.app
